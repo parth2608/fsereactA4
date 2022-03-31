@@ -45,7 +45,6 @@ const Profile = () => {
             Logout
           </button>
         </div>
-
         <div className="p-2">
           <h4 className="fw-bolder pb-0 mb-0">
             {profile.username}<i className="fa fa-badge-check text-primary"></i>
