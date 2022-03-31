@@ -11,16 +11,15 @@ const Home = () => {
   const [tuit, setTuit] = useState('');
   const userId = uid;
   const findTuits = () =>
-      service.findAllTuits()
-        .then(tuits => setTuits(tuits));
+      service.findAllTuits().then(tuits => setTuits(tuits));
   useEffect(() => {
     let isMounted = true;
     findTuits()
-    return () => {isMounted = false;}
+    return () => {
+    isMounted = false;
+    }
   }, []);
-  const createTuit = () =>
-      service.createTuit('my', {tuit})
-          .then(findTuits)
+  const createTuit = () => service.createTuit('me', {tuit}).then(findTuits)
   return(
     <div className="ttr-home">
       <div className="border border-bottom-0">
@@ -32,10 +31,9 @@ const Home = () => {
           </div>
           <div className="p-2 w-100">
             <textarea
-                onChange={(e) =>
-                    setTuit(e.target.value)}
-              placeholder="What's happening?"
-              className="w-100 border-0"></textarea>
+                onChange={(e) => setTuit(e.target.value)}
+                placeholder="What's happening?"
+                className="w-100 border-0"></textarea>
             <div className="row">
               <div className="col-10 ttr-font-size-150pc text-primary">
                 <i className="fas fa-portrait me-3"></i>
@@ -56,8 +54,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Tuits tuits={tuits}
-             refreshTuits={findTuits}/>
+      <Tuits tuits={tuits} refreshTuits={findTuits}/>
     </div>
   );
 };
