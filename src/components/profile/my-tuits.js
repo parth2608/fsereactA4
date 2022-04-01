@@ -8,8 +8,12 @@ const MyTuits = () => {
         service.findTuitByUser("my")
             .then(tuits => setTuits(tuits));
     useEffect(findMyTuits, []);
+    const deleteTuit = (tid) =>
+        service.deleteTuit(tid)
+            .then(findMyTuits);
     return(
         <Tuits tuits={tuits}
+               deleteTuit={deleteTuit}
                refreshTuits={findMyTuits}/>
     );
 };
