@@ -3,13 +3,9 @@ import TuitStats from "../components/tuits/tuit-stats";
 
 test('stats render correctly', () => {
     let stats = {likes: 2, replies: 1, retuits: 3,dislikes: 1,}
-    const likeTuit = () => {
-        act(() => {stats.likes++; tuitStats.update(<TuitStats tuit={{stats: stats}} likeTuit={() => {}}/>)})
-    }
+    const likeTuit = () => {act(() => {stats.likes++; tuitStats.update(<TuitStats tuit={{stats: stats}} likeTuit={() => {}}/>)})}
     let tuitStats
-    act(() => {
-        tuitStats = create(<TuitStats likeTuit={likeTuit} tuit={{stats: stats}}/>);
-    })
+    act(() => {tuitStats = create(<TuitStats likeTuit={likeTuit} tuit={{stats: stats}}/>);})
     const root = tuitStats.root;
     const likesCounter = root.findByProps({className: 'ttr-stats-likes'})
     const dislikesCounter = root.findByProps({className: 'ttr-stats-dislikes'})
@@ -20,7 +16,6 @@ test('stats render correctly', () => {
     let dislikesText = dislikesCounter.children[0];
     const repliesText = repliesCounter.children[0];
     const retuitsText = retuitsCounter.children[0];
-
     expect(likesText).toBe('2');
     expect(dislikesText).toBe('1');
     expect(repliesText).toBe('1');
@@ -32,9 +27,7 @@ test('stats render correctly', () => {
 
 test('stats render correctly', () => {
     let stats = {likes: 2, replies: 1, retuits: 3,dislikes: 1,}
-    const dislikeTuit = () => {
-        act(() => {stats.dislikes++; tuitStats.update(<TuitStats tuit={{stats: stats}} dislikeTuit={() => {}}/>)})
-    }
+    const dislikeTuit = () => {act(() => {stats.dislikes++; tuitStats.update(<TuitStats tuit={{stats: stats}} dislikeTuit={() => {}}/>)})}
     let tuitStats
     act(() => {tuitStats = create(<TuitStats dislikeTuit={dislikeTuit} tuit={{stats: stats}}/>);})
     const root = tuitStats.root;
