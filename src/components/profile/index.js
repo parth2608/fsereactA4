@@ -5,6 +5,7 @@ import * as service from "../../services/security-service"
 import TuitsAndReplies from "./tuits-and-replies";
 import Media from "./media";
 import MyLikes from "./my-likes";
+import MyDislikes from "./my-dislikes";
 const Profile = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,7 +45,6 @@ const Profile = () => {
             Logout
           </button>
         </div>
-
         <div className="p-2">
           <h4 className="fw-bolder pb-0 mb-0">
             {profile.username}<i className="fa fa-badge-check text-primary"></i>
@@ -87,6 +87,11 @@ const Profile = () => {
                     className={`nav-link ${location.pathname.indexOf('likes') >= 0 ? 'active':''}`}>
                 Likes</Link>
             </li>
+            <li className="nav-item">
+              <Link to="/profile/dislikes"
+                    className={`nav-link ${location.pathname.indexOf('dislikes') >= 0 ? 'active':''}`}>
+                Dislikes</Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -95,6 +100,7 @@ const Profile = () => {
           <Route path="/tuits-and-replies" element={<TuitsAndReplies/>}/>
           <Route path="/media" element={<Media/>}/>
           <Route path="/likes" element={<MyLikes/>}/>
+          <Route path="/dislikes" element={<MyDislikes/>}/>
         </Routes>
     </div>
   );
