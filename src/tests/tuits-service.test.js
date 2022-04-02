@@ -70,7 +70,7 @@ describe("Retrieve All Tuits", () => {
     test("can retrieve all tuits with REST API", async () => {
         let retrievedTuits = await findAllTuits();
         expect(retrievedTuits.length).toBeGreaterThanOrEqual(tuits.length);
-        const tuitsWeInserted = retrievedTuits.filter((tuit) => tuit.postedBy._id === newUser._id);
+        const tuitsWeInserted = retrievedTuits.filter((tuit) => tuit.postedBy && tuit.postedBy._id === newUser._id);
         tuitsWeInserted.forEach((t) => {expect(tuits.indexOf(t.tuit)).toBeGreaterThanOrEqual(0);});
     });
 });
